@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tempro - Project Details</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .slider-container {
+      display: flex;
+      overflow-x: auto;
+      gap: 20px;
+      padding: 20px;
+      scroll-snap-type: x mandatory;
+    }
+    .slider-container::-webkit-scrollbar {
+      display: none;
+    }
+    .slider-card {
+      flex: 0 0 80%;
+      scroll-snap-align: center;
+      background: #111;
+      border-radius: 16px;
+      box-shadow: 0 0 10px #0ff;
+      padding: 10px;
+      text-align: center;
+    }
+    .slider-card img {
+      width: 100%;
+      border-radius: 12px;
+      max-height: 300px;
+      object-fit: cover;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align:center;">Tempro</h1>
+    <p style="text-align:center;">A temperature monitoring system using Arduino and sensors.<p>
+   <h3> Tempro is a smart temperature monitoring system designed to track real-time temperature data and ensure safety through instant alerts. Equipped with sensors and intelligent software, Tempro continuously monitors environmental or other temperatures and triggers notifications or alarms when predefined thresholds are exceeded.we can monitor the temprature in the web app. Ideal for use in homes, labs, server rooms, or industrial setups,a/c convention centre. Tempro helps prevent temperature-related issues through proactive alerts and intuitive monitoring..</h3>
+
+    <!-- Image Slider -->
+    <div class="slider-container">
+      <div class="slider-card">
+        <img src="img1.jpg" alt="Slide 1">
+      </div>
+      <div class="slider-card">
+        <img src="img2.jpg" alt="Slide 2">
+      </div>
+      <div class="slider-card">
+        <img src="img3.jpg" alt="Slide 3">
+      </div>
+    </div>
+
+    <div style="text-align:center; margin-top: 30px;">
+      <a href="projects.html" class="btn">Back to Projects</a>
+    </div>
+  </div>
+</body>
+</html>

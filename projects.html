@@ -1,0 +1,122 @@
+<!-- projects.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Projects - Muhammed Afkar M.A</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .projects-page {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      color: #fff;
+    }
+
+    .projects-page h1 {
+      font-size: 36px;
+      color: #ff0077;
+      text-align: center;
+      text-shadow: 0 0 10px #ff0077;
+      margin-bottom: 40px;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .project-card {
+      background-color: #141414;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 0 15px #00ffff33;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px #00ffff, 0 0 50px #ff00ff;
+    }
+
+    .project-card h2 {
+      font-size: 20px;
+      color: #39ff14;
+      text-shadow: 0 0 6px #39ff14;
+      margin-bottom: 10px;
+    }
+
+    .project-card p {
+      font-size: 14px;
+      color: #ccc;
+    }
+
+    .back-link {
+      display: block;
+      text-align: center;
+      margin-top: 40px;
+      font-size: 14px;
+      color: #888;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      color: #00ffff;
+      text-shadow: 0 0 5px #00ffff;
+    }
+  </style>
+</head>
+<body>
+  <div class="projects-page">
+    <h1>My Projects</h1>
+
+    <div class="card-grid">
+      <a href="tempro.html" class="project-card">
+  <h2>Tempro</h2>
+  <p>Tempro is a smart temperature monitoring system designed to track real-time temperature data and ensure safety through instant alerts. Equipped with sensors and intelligent software, Tempro continuously monitors environmental or other temperatures and triggers notifications or alarms when predefined thresholds are exceeded.we can monitor the temprature in the web app. Ideal for use in homes, labs, server rooms, or industrial setups,a/c convention centre. Tempro helps prevent temperature-related issues through proactive alerts and intuitive monitoring..</p>
+</a>
+
+      <div class="project-card">
+        <h2>Get My Bus</h2>
+        <p>Get My Bus is a real-time bus tracking solution designed to simplify daily commuting. By integrating GPS hardware with a NodeMCU ESP8266 microcontroller, this system allows users to accurately track the live location of their bus through a user-friendly interface. Whether you're at home or on the go, Get My Bus ensures you're always informed about your bus’s exact location, helping you save time and reduce waiting. Perfect for schools, offices, and public transit users.
+</p>
+      </div>
+
+    <div class="card-grid">
+  <a href="electfair.html" class="project-card">
+    <h2>Electfair</h2>
+    <p>
+      VoteFair is a fully interactive web-based election system designed for school environments. Created for the ElectFair exhibition, it allows students to set up and participate in virtual elections with real-time voting and result generation. Built with HTML, CSS, JavaScript, and Bootstrap, the app simulates a complete election experience, including candidate setup, vote casting, result password protection, and PDF result downloads.
+      <br><br>
+      <strong>Key Features:</strong><br>
+      Dynamic candidate setup with emoji symbols<br>
+      Real-time vote casting and confirmation<br>
+      Password-protected results screen<br>
+      Downloadable result PDF using jsPDF<br>
+      Stylish UI with responsive Bootstrap design
+    </p>
+       <!-- Download button -->
+  <a href="electfair.html" download="electfair.html" class="btn" style="margin-top: 10px; display: inline-block;">
+    Download software
+  </a>
+  </a>
+
+ 
+</div>
+
+
+      <div class="project-card">
+        <h2>Web Apps</h2>
+        <p>This collection showcases a variety of web applications developed to blend fun and functionality. In the games section, you'll find interactive classics like Ludo, Tic Tac Toe, Snake and Ladder, Dino Jump, Maze Games, and engaging Puzzles—all built with a focus on responsive design and smooth gameplay.
+
+Beyond games, this section also includes a range of business-oriented web applications crafted to meet real-world needs, from landing pages and portfolio sites to interactive dashboards and e-commerce platforms. Each project demonstrates creativity, problem-solving, and full-stack web development skills.
+</p>
+      </div>
+    </div>
+
+    <a class="back-link" href="index.html">&larr; Back to Home</a>
+  </div>
+</body>
+</html>
