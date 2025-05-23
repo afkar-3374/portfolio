@@ -2,59 +2,150 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Tempro - Project Details</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      color: #ff00ff;
+      text-shadow: 0 0 15px #ff00ff;
+      margin-bottom: 15px;
+    }
+
+    .desc {
+      max-width: 800px;
+      margin: 10px auto;
+      font-size: 1em;
+      color: #ccc;
+      transition: 0.3s;
+    }
+
+    .slider-wrapper {
+      overflow: hidden;
+      width: 100%;
+      margin-top: 25px;
+    }
+
     .slider-container {
       display: flex;
       overflow-x: auto;
-      gap: 20px;
-      padding: 20px;
       scroll-snap-type: x mandatory;
+      gap: 15px;
+      padding: 10px;
+      scroll-behavior: smooth;
+      justify-content: center;
     }
+
     .slider-container::-webkit-scrollbar {
       display: none;
     }
+
     .slider-card {
       flex: 0 0 80%;
+      max-width: 300px;
       scroll-snap-align: center;
-      background: #111;
       border-radius: 16px;
-      box-shadow: 0 0 10px #0ff;
-      padding: 10px;
-      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 0 15px #ff007f, 0 0 20px #0ff;
+      background: #111;
+      position: relative;
+      transition: transform 0.3s;
     }
+
+    .slider-card:hover {
+      transform: scale(1.03);
+      cursor: pointer;
+    }
+
     .slider-card img {
       width: 100%;
-      border-radius: 12px;
-      max-height: 300px;
-      object-fit: cover;
+      height: auto;
+      display: block;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 10px 20px;
+      background: #ff007f;
+      color: white;
+      font-size: 1em;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 0 15px #ff007f;
+    }
+
+    .btn:hover {
+      background: #e60073;
+    }
+
+    .hide {
+      display: none;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1 style="text-align:center;">Tempro</h1>
-    <p style="text-align:center;">A temperature monitoring system using Arduino and sensors.<p>
-   <h3> Tempro is a smart temperature monitoring system designed to track real-time temperature data and ensure safety through instant alerts. Equipped with sensors and intelligent software, Tempro continuously monitors environmental or other temperatures and triggers notifications or alarms when predefined thresholds are exceeded.we can monitor the temprature in the web app. Ideal for use in homes, labs, server rooms, or industrial setups,a/c convention centre. Tempro helps prevent temperature-related issues through proactive alerts and intuitive monitoring..</h3>
+    <h1>Tempro</h1>
+    <p class="desc" id="desc1">A temperature monitoring system using Arduino and sensors.</p>
+    <p class="desc" id="desc2">
+      Tempro is a smart temperature monitoring system designed to track real-time temperature data and ensure safety through instant alerts. Equipped with sensors and intelligent software, Tempro continuously monitors environments and triggers alarms or web notifications when thresholds are exceeded. Ideal for labs, homes, AC halls, etc.
+    </p>
 
-    <!-- Image Slider -->
-    <div class="slider-container">
-      <div class="slider-card">
-        <img src="img1.jpg" alt="Slide 1">
-      </div>
-      <div class="slider-card">
-        <img src="img2.jpg" alt="Slide 2">
-      </div>
-      <div class="slider-card">
-        <img src="img3.jpg" alt="Slide 3">
+    <div class="slider-wrapper">
+      <div class="slider-container" id="slider">
+        <div class="slider-card" onclick="toggleText()">
+          <img src="img1.png" alt="Slide 1" />
+        </div>
+        <div class="slider-card" onclick="toggleText()">
+          <img src="img2.png" alt="Slide 2" />
+        </div>
+        <div class="slider-card" onclick="toggleText()">
+          <img src="img3.png" alt="Slide 3" />
+        </div>
+        <div class="slider-card" onclick="toggleText()">
+          <img src="circuit.png" alt="Slide 4" />
+        </div>
       </div>
     </div>
 
-    <div style="text-align:center; margin-top: 30px;">
-      <a href="projects.html" class="btn">Back to Projects</a>
-    </div>
+    <a href="projects.html" class="btn">Back to Projects</a>
   </div>
+
+  <script>
+    const slider = document.getElementById('slider');
+    let index = 0;
+
+    function autoSlide() {
+      const cards = slider.querySelectorAll('.slider-card');
+      index = (index + 1) % cards.length;
+      cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center' });
+    }
+
+    setInterval(autoSlide, 4000);
+
+    function toggleText() {
+      document.getElementById('desc1').classList.toggle('hide');
+      document.getElementById('desc2').classList.toggle('hide');
+    }
+  </script>
 </body>
 </html>
