@@ -25,17 +25,17 @@
   }
 
   body.light {
-    --bg-color: #f5f7fa;
-    --text-color: #2a2a2a;
-    --heading-color: #1a1a1a;
-    --accent-color: #4a90e2;
-    --accent-dark: #357abd;
-    --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    --glass-border: linear-gradient(90deg, rgba(74, 144, 226, 0.5), rgba(255, 105, 180, 0.5));
-    --tag-bg: rgba(74, 144, 226, 0.15);
-    --tag-text: #4a90e2;
-    --link-hover: rgba(74, 144, 226, 0.1);
-    --shadow-color: rgba(74, 144, 226, 0.2);
+    --bg-color: #fffaf0;
+    --text-color: #2d3436;
+    --heading-color: #2d3436;
+    --accent-color: #ff6b81; /* Coral */
+    --accent-dark: #ff4757; /* Darker coral */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: linear-gradient(90deg, #ff6b81, #4ecdc4); /* Coral to teal */
+    --tag-bg: rgba(255, 107, 129, 0.2);
+    --tag-text: #ff6b81;
+    --link-hover: rgba(255, 107, 129, 0.1);
+    --shadow-color: rgba(255, 107, 129, 0.2);
   }
 
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -49,15 +49,14 @@
     color: var(--text-color);
     min-height: 100vh;
     overflow-x: hidden;
-    transition: background 0.5s ease;
+    transition: background 0.5s ease, color 0.5s ease;
   }
 
   body.light {
     background:
-      radial-gradient(at 20% 30%, rgba(74, 144, 226, 0.15), transparent 50%),
-      radial-gradient(at 80% 70%, rgba(255, 105, 180, 0.15), transparent 50%),
-      var(--bg-color);
-    animation: gradientShift 15s ease infinite;
+      linear-gradient(135deg, #fffaf0, #f0efeb, #ffe3e3, #e6fffd);
+    background-size: 400% 400%;
+    animation: gradientShift 20s ease infinite;
   }
 
   @keyframes gradientShift {
@@ -78,9 +77,14 @@
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
+  body.light .glass {
+    backdrop-filter: blur(15px) saturate(180%);
+    box-shadow: 0 12px 36px var(--shadow-color);
+  }
+
   body.light .glass:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 40px var(--shadow-color);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 48px var(--shadow-color);
   }
 
   header {
@@ -126,6 +130,10 @@
     transform: scale(1.05);
   }
 
+  body.light nav a {
+    font-weight: 600;
+  }
+
   body.light nav a::after {
     content: '';
     position: absolute;
@@ -133,7 +141,7 @@
     left: 50%;
     width: 0;
     height: 2px;
-    background: var(--accent-color);
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
     transition: width 0.3s ease, left 0.3s ease;
   }
 
@@ -161,10 +169,19 @@
     transition: 0.3s ease;
   }
 
+  body.light #themeToggle {
+    background: linear-gradient(135deg, var(--accent-color), #4ecdc4);
+    color: #fff;
+  }
+
   #themeToggle:hover {
     background: var(--accent-color);
     color: #fff;
     transform: rotate(20deg);
+  }
+
+  body.light #themeToggle:hover {
+    transform: rotate(20deg) scale(1.1);
   }
 
   section {
@@ -180,6 +197,10 @@
     font-size: clamp(24px, 5vw, 36px);
   }
 
+  body.light h1, body.light h2, body.light h3 {
+    font-weight: 700;
+  }
+
   .tagline {
     display: inline-block;
     background: var(--tag-bg);
@@ -190,6 +211,10 @@
     margin-bottom: 20px;
     transition: transform 0.3s ease;
     font-size: clamp(14px, 3vw, 16px);
+  }
+
+  body.light .tagline {
+    background: linear-gradient(135deg, rgba(255, 107, 129, 0.2), rgba(78, 205, 196, 0.2));
   }
 
   body.light .tagline:hover {
@@ -221,6 +246,10 @@
     transition: transform 0.3s ease;
   }
 
+  body.light .hero-img {
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
   body.light .hero-img:hover {
     transform: rotate(5deg) scale(1.05);
   }
@@ -239,6 +268,10 @@
     font-size: clamp(14px, 3vw, 16px);
   }
 
+  body.light .btn {
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
+  }
+
   body.light .btn::before {
     content: '';
     position: absolute;
@@ -246,7 +279,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
     transition: 0.5s ease;
   }
 
@@ -259,6 +292,10 @@
     transform: translateY(-3px);
   }
 
+  body.light .btn:hover {
+    transform: translateY(-3px) scale(1.05);
+  }
+
   .accordion {
     margin-bottom: 20px;
     padding: clamp(15px, 4vw, 20px);
@@ -267,11 +304,16 @@
     border-radius: 18px;
     border-left: 4px solid var(--accent-color);
     box-shadow: 0 4px 16px var(--shadow-color);
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, border-left-color 0.3s ease;
+  }
+
+  body.light .accordion {
+    border-left: 4px solid var(--accent-color);
   }
 
   body.light .accordion:hover {
     transform: translateY(-5px);
+    border-left-color: #4ecdc4;
   }
 
   .accordion h3 { 
@@ -279,52 +321,111 @@
     font-weight: 500; 
     font-size: clamp(18px, 4vw, 22px);
   }
+
+  body.light .accordion h3 {
+    font-weight: 600;
+  }
+
   .accordion-content { 
-    display: none; 
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
     margin-top: 12px; 
     font-size: clamp(14px, 3vw, 16px);
+    transition: max-height 0.4s ease-out, opacity 0.4s ease-out;
   }
-  .accordion.open .accordion-content { display: block; }
+
+  .accordion.open .accordion-content { 
+    max-height: 1000px;
+    opacity: 1;
+  }
+
+  .project-img-card {
+    display: flex;
+    justify-content: center;
+    margin-top: 12px;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: 0 4px 12px var(--shadow-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    width: 100%;
+    max-width: clamp(200px, 50vw, 300px);
+    height: clamp(120px, 30vw, 180px);
+    overflow: hidden;
+  }
+
+  body.light .project-img-card {
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
+  body.light .project-img-card:hover {
+    transform: scale(1.05) rotate(2deg);
+    box-shadow: 0 8px 20px var(--shadow-color);
+  }
 
   .project-img {
     width: 100%;
-    max-width: 500px;
-    border-radius: 16px;
-    margin-top: 12px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
     border: 2px solid var(--glass-border);
-    transition: transform 0.3s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.5s ease;
   }
 
-  body.light .project-img:hover {
-    transform: scale(1.03);
+  .project-img:first-child {
+    opacity: 1;
+    animation: fadeImage 4s infinite;
   }
 
-  .external-links-card {
+  .project-img:nth-child(2) {
+    animation: fadeImage 4s infinite 2s;
+  }
+
+  @keyframes fadeImage {
+    0% { opacity: 1; }
+    25% { opacity: 1; }
+    50% { opacity: 0; }
+    75% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .mini-card-container {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
     margin-top: 14px;
     justify-content: center;
   }
 
-  .external-links-card a {
-    flex: 1 1 clamp(120px, 40vw, 180px);
+  .mini-card {
+    flex: 0 1 clamp(100px, 30vw, 140px);
     text-align: center;
-    padding: 12px;
+    padding: 8px;
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
-    border-radius: 14px;
+    border-radius: 12px;
     text-decoration: none;
     font-weight: 600;
     color: var(--accent-color);
-    transition: 0.3s ease;
-    font-size: clamp(14px, 3vw, 16px);
+    transition: transform 0.3s ease, background 0.3s ease;
+    font-size: clamp(12px, 2.5vw, 14px);
   }
 
-  body.light .external-links-card a:hover {
-    background: var(--tag-bg);
+  body.light .mini-card {
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
+  body.light .mini-card:hover {
+    background: linear-gradient(135deg, var(--accent-color), #4ecdc4);
     color: #fff;
-    transform: translateY(-3px);
+    transform: scale(1.05);
   }
 
   .contact-cards {
@@ -347,8 +448,13 @@
     transition: transform 0.3s ease;
   }
 
+  body.light .contact-card {
+    background: linear-gradient(135deg, rgba(255, 107, 129, 0.1), rgba(78, 205, 196, 0.1));
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
   body.light .contact-card:hover {
-    transform: scale(1.05);
+    transform: translateY(-8px);
   }
 
   .contact-card i {
@@ -372,6 +478,10 @@
     background: var(--glass-bg);
     border-top: 1px solid var(--glass-border);
     backdrop-filter: blur(18px);
+  }
+
+  body.light footer {
+    background: linear-gradient(135deg, rgba(255, 107, 129, 0.1), rgba(78, 205, 196, 0.1));
   }
 
   .fade {
@@ -404,8 +514,19 @@
     transition: transform 0.3s ease;
   }
 
+  body.light #toTop {
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
+  }
+
   body.light #toTop:hover {
     transform: scale(1.2);
+    animation: pulse 1s infinite;
+  }
+
+  @keyframes pulse {
+    0% { transform: scale(1.2); }
+    50% { transform: scale(1.3); }
+    100% { transform: scale(1.2); }
   }
 
   .popup-overlay {
@@ -421,6 +542,10 @@
     visibility: hidden;
     opacity: 0;
     transition: all 0.3s ease;
+  }
+
+  body.light .popup-overlay {
+    background: rgba(0,0,0,0.4);
   }
 
   .popup-overlay.active {
@@ -454,6 +579,10 @@
     transition: transform 0.3s ease;
   }
 
+  body.light .popup-box button {
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
+  }
+
   body.light .popup-box button:hover {
     transform: rotate(90deg);
   }
@@ -470,7 +599,7 @@
   }
 
   body.light #progress-bar {
-    background: linear-gradient(90deg, var(--accent-color), #ff69b4);
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
   }
 
   .skills-container {
@@ -502,7 +631,7 @@
   }
 
   body.light .skill-progress {
-    background: linear-gradient(90deg, var(--accent-color), #ff69b4);
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
   }
 
   .filter-buttons {
@@ -525,13 +654,21 @@
     font-size: clamp(12px, 2.5vw, 14px);
   }
 
+  body.light .filter-btn {
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
   body.light .filter-btn:hover {
-    transform: translateY(-3px);
+    transform: scale(1.05);
   }
 
   .filter-btn.active, .filter-btn:hover {
     background: var(--accent-color);
     color: #fff;
+  }
+
+  body.light .filter-btn.active, body.light .filter-btn:hover {
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
   }
 
   .contact-form {
@@ -554,9 +691,14 @@
     font-size: clamp(14px, 3vw, 16px);
   }
 
+  body.light .contact-form input,
+  body.light .contact-form textarea {
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
   body.light .contact-form input:focus,
   body.light .contact-form textarea:focus {
-    border-image: var(--glass-border) 1;
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
   }
 
   .contact-form input:focus,
@@ -578,9 +720,12 @@
     font-size: clamp(14px, 3vw, 16px);
   }
 
+  body.light .contact-form button {
+    background: linear-gradient(90deg, var(--accent-color), #4ecdc4);
+  }
+
   body.light .contact-form button:hover {
-    background: linear-gradient(90deg, var(--accent-color), #ff69b4);
-    transform: translateY(-3px);
+    transform: scale(1.05);
   }
 
   .social-share {
@@ -601,8 +746,12 @@
     transition: 0.3s ease;
   }
 
+  body.light .social-share a {
+    border-image: linear-gradient(90deg, var(--accent-color), #4ecdc4) 1;
+  }
+
   body.light .social-share a:hover {
-    background: linear-gradient(135deg, var(--accent-color), #ff69b4);
+    background: linear-gradient(135deg, var(--accent-color), #4ecdc4);
     color: #fff;
     transform: scale(1.2);
   }
@@ -671,14 +820,16 @@
       font-size: clamp(16px, 4.5vw, 18px);
     }
 
-    .project-img {
+    .project-img-card {
+      padding: 8px;
       max-width: 100%;
+      height: clamp(100px, 25vw, 150px);
     }
 
-    .external-links-card a {
+    .mini-card {
       flex: 1 1 100%;
-      padding: 10px;
-      font-size: 14px;
+      padding: 8px;
+      font-size: 12px;
     }
 
     .contact-cards {
@@ -747,8 +898,8 @@
       padding: 8px 16px;
     }
 
-    .external-links-card a {
-      flex: 1 1 200px;
+    .mini-card {
+      flex: 1 1 120px;
     }
 
     .contact-card {
@@ -769,7 +920,7 @@
     <a href="#projects">Projects</a>
     <a href="#contact">Contact</a>
     <span id="clock"></span>
-    <button id="themeToggle" title="Toggle Theme"><i class="fas fa-moon"></i></button>
+    <button id="themeToggle"><i class="fas fa-moon"></i></button>
   </nav>
 </header>
 
@@ -829,10 +980,13 @@
         <h3>Tempro (IoT Temperature Network)</h3>
         <div class="accordion-content">
           A scalable IoT temperature monitoring network using 10 NodeMCU ESP8266 boards and MQTT.
-          <img class="project-img" src="https://i.postimg.cc/nhLSj9jY/tempro.jpg" alt="Tempro">
-          <div class="external-links-card">
-            <a href="http://tempro.curiosityweekends.org/" target="_blank">Tempro 1</a>
-            <a href="https://afkar-3374.github.io/Tempro-V2/" target="_blank">Tempro Travelmate</a>
+          <div class="project-img-card">
+            <img class="project-img" src="https://i.postimg.cc/nhLSj9jY/tempro.jpg" alt="Tempro Image 1">
+            <img class="project-img" src="https://via.placeholder.com/300x200?text=Tempro+Image+2" alt="Tempro Image 2">
+          </div>
+          <div class="mini-card-container">
+            <a href="http://tempro.curiosityweekends.org/" target="_blank" class="mini-card">Tempro 1</a>
+            <a href="https://afkar-3374.github.io/Tempro-V2/" target="_blank" class="mini-card">Tempro Travelmate</a>
           </div>
         </div>
       </div>
@@ -841,10 +995,13 @@
         <h3>Election Web Platform</h3>
         <div class="accordion-content">
           Responsive voting platform with real‑time results and admin control.
-          <img class="project-img" src="https://i.postimg.cc/WzYYjq4S/election.jpg" alt="Election Web">
-          <div class="external-links-card">
-            <a href="https://afkar-3374.github.io/election/" target="_blank">Live Demo</a>
-            <a href="https://raw.githubusercontent.com/afkar-3374/election/main/index.html" download>Download Code</a>
+          <div class="project-img-card">
+            <img class="project-img" src="https://i.postimg.cc/WzYYjq4S/election.jpg" alt="Election Web Image 1">
+            <img class="project-img" src="https://via.placeholder.com/300x200?text=Election+Image+2" alt="Election Web Image 2">
+          </div>
+          <div class="mini-card-container">
+            <a href="https://afkar-3374.github.io/election/" target="_blank" class="mini-card">Live Demo</a>
+            <a href="https://raw.githubusercontent.com/afkar-3374/election/main/index.html" download class="mini-card">Download Code</a>
           </div>
         </div>
       </div>
@@ -853,7 +1010,10 @@
         <h3>Face Tracking Robot</h3>
         <div class="accordion-content">
           Uses OpenCV and servo motors to detect and follow faces.
-          <img class="project-img" src="https://i.postimg.cc/3xkxyHDM/facetrack.jpg" alt="Face Tracking">
+          <div class="project-img-card">
+            <img class="project-img" src="https://i.postimg.cc/3xkxyHDM/facetrack.jpg" alt="Face Tracking Image 1">
+            <img class="project-img" src="https://via.placeholder.com/300x200?text=Face+Tracking+Image+2" alt="Face Tracking Image 2">
+          </div>
         </div>
       </div>
 
@@ -861,7 +1021,10 @@
         <h3>Fire Extinguisher Robot</h3>
         <div class="accordion-content">
           Autonomous robot that detects fire and sprays water to extinguish it.
-          <img class="project-img" src="https://i.postimg.cc/q7xW4KBN/firebot.jpg" alt="Fire Extinguisher Robot">
+          <div class="project-img-card">
+            <img class="project-img" src="https://i.postimg.cc/q7xW4KBN/firebot.jpg" alt="Fire Extinguisher Robot Image 1">
+            <img class="project-img" src="https://via.placeholder.com/300x200?text=Fire+Bot+Image+2" alt="Fire Extinguisher Robot Image 2">
+          </div>
         </div>
       </div>
 
@@ -869,7 +1032,10 @@
         <h3>Humanoid Robot</h3>
         <div class="accordion-content">
           A robot with hand movement, face recognition, and speech output.
-          <img class="project-img" src="https://i.postimg.cc/Y2k44Txj/humanoid.jpg" alt="Humanoid Robot">
+          <div class="project-img-card">
+            <img class="project-img" src="https://i.postimg.cc/Y2k44Txj/humanoid.jpg" alt="Humanoid Robot Image 1">
+            <img class="project-img" src="https://via.placeholder.com/300x200?text=Humanoid+Image+2" alt="Humanoid Robot Image 2">
+          </div>
         </div>
       </div>
     </div>
@@ -881,14 +1047,14 @@
     <h2>Contact</h2>
     <div class="contact-cards">
       <div class="contact-card"><i class="fas fa-envelope"></i><p><a href="mailto:afkar3374@gmail.com">afkar3374@gmail.com</a></p></div>
-      <div class="contact-card"><i class="fab fa-whatsapp"></i><p><a href="https://wa.me/919895088590">+91 98950 88590</a></p></div>
+      <div class="contact-card"><i class="fab fa-whatsapp"></i><p><a href="https://wa.me/919895088590">+91 98950 88590</a></p></div>
       <div class="contact-card"><i class="fab fa-github"></i><p><a href="https://github.com/afkar-3374" target="_blank">github.com/afkar-3374</a></p></div>
     </div>
-    <form class="contact-form" id="contactForm" onsubmit="return false;">
+    <form class="contact-form" id="contactForm">
       <input type="text" id="name" placeholder="Your Name" required>
       <input type="email" id="email" placeholder="Your Email" required>
       <textarea id="message" placeholder="Your Message" rows="5" required></textarea>
-      <button type="submit" onclick="submitForm()">Send Message</button>
+      <button type="submit">Send Message</button>
     </form>
   </div>
 </section>
@@ -903,45 +1069,67 @@
 <div class="popup-overlay" id="popup-contact"><div class="popup-box"><button onclick="closePopup('popup-contact')">×</button><h3>Contact</h3><p>Feel free to reach out to me at any time!</p></div></div>
 
 <script>
-function updateClock(){
-  const now = new Date().toLocaleTimeString('en-IN',{
-    hour:'2-digit',minute:'2-digit',second:'2-digit',
-    hour12:true,timeZone:'Asia/Kolkata'
+function updateClock() {
+  const now = new Date().toLocaleTimeString('en-IN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true,
+    timeZone: 'Asia/Kolkata'
   });
   document.getElementById('clock').textContent = now;
 }
-updateClock(); setInterval(updateClock,1000);
+updateClock();
+setInterval(updateClock, 1000);
 
-document.querySelectorAll('.accordion h3').forEach(h=>{
-  h.addEventListener('click',()=>h.parentElement.classList.toggle('open'));
+document.querySelectorAll('.accordion h3').forEach(h => {
+  h.addEventListener('click', () => {
+    const parent = h.parentElement;
+    const isOpen = parent.classList.contains('open');
+    
+    if (isOpen) {
+      parent.classList.remove('open');
+      return;
+    }
+    
+    const openAccordion = document.querySelector('.accordion.open');
+    if (openAccordion) {
+      openAccordion.classList.remove('open');
+      setTimeout(() => {
+        parent.classList.add('open');
+      }, 400);
+    } else {
+      parent.classList.add('open');
+    }
+  });
 });
 
-const IO = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
+const IO = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
       e.target.classList.add('visible');
-      if(e.target.id === 'about'){
+      if (e.target.id === 'about') {
         document.querySelectorAll('.skill-progress').forEach(bar => {
           bar.style.width = bar.getAttribute('data-progress') + '%';
         });
       }
     }
   });
-},{threshold:0.2});
-document.querySelectorAll('.fade').forEach(el=>IO.observe(el));
+}, { threshold: 0.2 });
+document.querySelectorAll('.fade').forEach(el => IO.observe(el));
 
 const toTop = document.getElementById('toTop');
-window.addEventListener('scroll',()=>{
-  toTop.style.display = window.scrollY > 300 ? 'flex' : 'none';
+window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const scrollPercent = (scrollTop / docHeight) * 100;
   document.getElementById('progress-bar').style.width = scrollPercent + '%';
+  toTop.style.display = scrollTop > 300 ? 'flex' : 'none';
 });
-toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+toTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
 const toggleBtn = document.getElementById("themeToggle");
-toggleBtn.onclick = ()=> {
+toggleBtn.onclick = () => {
   document.body.classList.toggle("light");
   toggleBtn.innerHTML = document.body.classList.contains("light") ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
 };
@@ -961,10 +1149,7 @@ document.querySelectorAll("nav a[href^='#']").forEach(link => {
       const duration = Math.floor(Math.random() * (3000 - 1000 + 1)) + 1000;
       setTimeout(() => {
         closePopup('popup-' + id);
-        const targetSection = document.getElementById(id);
-        if (targetSection) {
-          targetSection.scrollIntoView({ behavior: 'smooth' });
-        }
+        document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
       }, duration);
     }
   });
@@ -985,7 +1170,9 @@ document.querySelectorAll('.filter-btn').forEach(btn => {
   });
 });
 
-function submitForm() {
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
   const name = document.getElementById('name').value.trim();
   const email = document.getElementById('email').value.trim();
   const message = document.getElementById('message').value.trim();
@@ -1001,9 +1188,12 @@ function submitForm() {
     return;
   }
 
-  alert('Message sent successfully! (Note: This is a demo, no actual submission occurs.)');
+  const formattedMessage = `Name: ${name}\nEmail ID: ${email}\nNeed: ${message}`;
+  const encodedMessage = encodeURIComponent(formattedMessage);
+  const whatsappUrl = `https://wa.me/919895088590?text=${encodedMessage}`;
+  window.open(whatsappUrl, '_blank');
   document.getElementById('contactForm').reset();
-}
+});
 </script>
 </body>
 </html>
