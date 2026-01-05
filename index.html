@@ -2,10 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Muhammed Afkar — Portfolio</title>
+  <title>Muhammed Afkar — Electronics & Web Projects</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Portfolio of Muhammed Afkar M A — electronics, robotics, IoT, and web projects." />
+  <meta name="description" content="Portfolio of Muhammed Afkar M A — electronics, robotics, IoT, and modern web apps." />
 
+  <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -15,161 +16,631 @@
             sans: ["Poppins", "system-ui", "sans-serif"],
           },
           colors: {
-            accent: "#22d3ee"
+            brand: {
+              500: "#06b6d4",
+              600: "#0891b2",
+              700: "#0e7490"
+            }
           }
         }
       }
     }
   </script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%2306b6d4'/%3E%3Cstop offset='1' stop-color='%233b82f6'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='45' fill='url(%23g)'/%3E%3Ctext x='50' y='58' font-size='42' text-anchor='middle' fill='white' font-family='Arial'%3EA%3C/text%3E%3C/svg%3E">
 
   <style>
-    body { background:#020617; }
-    .card {
-      background: rgba(15,23,42,.75);
-      backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,.08);
-      transition:.2s ease;
+    * { scroll-behavior: smooth; }
+    body { font-family: "Poppins", system-ui, sans-serif; }
+    .glass {
+      background: rgba(15,23,42,0.82);
+      backdrop-filter: blur(18px);
     }
-    .card:hover {
+    .glass-soft {
+      background: rgba(15,23,42,0.7);
+      backdrop-filter: blur(16px);
+    }
+    .card-hover {
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .card-hover:hover {
       transform: translateY(-4px);
-      border-color: rgba(34,211,238,.5);
+      box-shadow: 0 20px 40px rgba(15,23,42,0.6);
+      border-color: rgba(56,189,248,0.7);
     }
   </style>
 </head>
 
-<body class="text-slate-100">
-
-<!-- NAV -->
-<header class="sticky top-0 z-40 bg-slate-950/80 backdrop-blur border-b border-white/5">
-  <div class="max-w-6xl mx-auto px-4 h-16 flex justify-between items-center">
-    <a href="#hero" class="font-semibold">Muhammed Afkar</a>
-    <nav class="hidden md:flex gap-6 text-sm text-slate-300">
-      <a href="#projects" class="hover:text-white">Projects</a>
-      <a href="#skills" class="hover:text-white">Skills</a>
-      <a href="#about" class="hover:text-white">About</a>
-      <a href="#contact" class="hover:text-white">Contact</a>
-    </nav>
+<body class="bg-slate-950 text-slate-100">
+  <!-- Decorative blobs -->
+  <div class="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
+    <div class="absolute -top-40 -left-20 h-72 w-72 rounded-full bg-cyan-500/30 blur-3xl"></div>
+    <div class="absolute top-40 -right-20 h-72 w-72 rounded-full bg-indigo-500/25 blur-3xl"></div>
+    <div class="absolute bottom-[-6rem] left-1/2 -translate-x-1/2 h-72 w-72 rounded-full bg-emerald-500/20 blur-3xl"></div>
   </div>
-</header>
 
-<!-- HERO -->
-<section id="hero" class="py-20">
-  <div class="max-w-6xl mx-auto px-4">
-    <p class="text-xs uppercase tracking-widest text-accent">
-      Electronics • Robotics • Web
-    </p>
-    <h1 class="mt-4 text-4xl md:text-5xl font-semibold">
-      Muhammed <span class="text-accent">Afkar</span>
-    </h1>
-    <p class="mt-4 max-w-2xl text-slate-300">
-      I build practical systems that combine electronics, embedded hardware,
-      robotics, IoT, and clean web interfaces.
-    </p>
+  <!-- MAIN WRAPPER -->
+  <div class="min-h-screen flex flex-col">
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 border-b border-white/5 bg-slate-950/80 backdrop-blur-xl">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <div class="flex items-center justify-between h-16">
+          <!-- Brand -->
+          <a href="#hero" class="flex items-center gap-3">
+            <div class="h-10 w-10 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-500 flex items-center justify-center shadow-lg">
+              <span class="text-lg font-semibold">A</span>
+            </div>
+            <div class="hidden sm:block">
+              <p class="text-sm font-semibold">Muhammed Afkar</p>
+              <p class="text-[11px] text-slate-400">Electronics • Robotics • Web</p>
+            </div>
+          </a>
+
+          <!-- Nav links -->
+          <nav class="hidden md:flex items-center gap-5 text-sm">
+            <a href="#projects" class="text-slate-300 hover:text-white">Projects</a>
+            <a href="#skills" class="text-slate-300 hover:text-white">Skills</a>
+            <a href="#about" class="text-slate-300 hover:text-white">About</a>
+            <a href="#contact" class="text-slate-300 hover:text-white">Contact</a>
+            <a href="https://github.com/afkar-3374" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-blue-500 px-4 py-2 text-xs font-medium text-white shadow-md hover:shadow-lg">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 .5C5.648.5.5 5.648.5 12A11.5 11.5 0 0 0 8.34 23.1c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.1-.76.08-.74.08-.74 1.22.09 1.86 1.26 1.86 1.26 1.08 1.86 2.82 1.32 3.51 1.01.11-.79.42-1.32.76-1.62-2.67-.3-5.48-1.34-5.48-5.95 0-1.32.47-2.4 1.25-3.24-.13-.31-.54-1.56.12-3.25 0 0 1.01-.33 3.3 1.24a11.34 11.34 0 0 1 6.02 0c2.29-1.57 3.3-1.24 3.3-1.24.66 1.69.25 2.94.12 3.25.78.84 1.25 1.92 1.25 3.24 0 4.62-2.82 5.64-5.5 5.94.43.37.81 1.1.81 2.22v3.29c0 .32.22.7.82.58A11.5 11.5 0 0 0 23.5 12C23.5 5.648 18.352.5 12 .5Z"/>
+              </svg>
+              <span>@afkar-3374</span>
+            </a>
+          </nav>
+
+          <!-- Mobile quick GitHub -->
+          <a href="https://github.com/afkar-3374" target="_blank" class="md:hidden text-xs px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700">
+            GitHub
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <main id="hero" class="flex-1">
+      <section class="py-10 sm:py-14">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid gap-10 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-center">
+          <!-- Left -->
+          <div>
+            <p class="text-[11px] uppercase tracking-[0.25em] text-brand-500">Electronics • Robotics • Web Apps</p>
+            <h1 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight">
+              Hi, I'm <span class="text-brand-500">Muhammed Afkar</span>.
+            </h1>
+            <p class="mt-4 text-sm sm:text-base text-slate-300 max-w-xl">
+              I build systems that connect hardware and software: NodeMCU networks, moving zebra crossings,
+              humanoid robots, and modern web apps like
+              <span class="text-cyan-300 font-medium">A Poly Student</span>,
+              finance trackers, and smart builders.
+            </p>
+
+            <div class="mt-6 flex flex-wrap gap-3 text-sm">
+              <a href="#projects"
+                 class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-brand-500 to-blue-500 px-5 py-2.5 font-medium text-white shadow-lg hover:shadow-xl">
+                View Projects
+              </a>
+              <a href="#contact"
+                 class="inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-900/70 px-5 py-2.5 text-slate-100 hover:bg-slate-800">
+                Contact Me
+              </a>
+            </div>
+
+            <div class="mt-6 flex flex-wrap items-center gap-5 text-xs sm:text-sm text-slate-400">
+              <div class="flex items-center gap-2">
+                <span class="h-2 w-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                <span>Kasargod, India</span>
+              </div>
+              <div class="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
+                <span>26+ completed projects</span>
+                <span class="hidden sm:block h-3 w-px bg-slate-700"></span>
+                <span>Diploma in Electronics — GPC Kasaragod</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: stats / highlight -->
+          <div class="relative">
+            <div class="absolute -top-6 -right-4 h-20 w-20 rounded-full bg-cyan-500/40 blur-3xl"></div>
+            <div class="relative glass rounded-3xl border border-white/10 p-5 sm:p-6 shadow-2xl">
+              <div class="flex items-center justify-between gap-4">
+                <div>
+                  <p class="text-[11px] uppercase tracking-[0.2em] text-slate-400">Highlight</p>
+                  <h2 class="mt-1 text-base sm:text-lg font-semibold">Student Tools & Dashboards</h2>
+                  <p class="mt-2 text-xs sm:text-sm text-slate-300">
+                    A suite of tools: trackers, builders, and educational sites for students and schools.
+                  </p>
+                </div>
+                <div class="shrink-0">
+                  <div class="h-12 w-12 rounded-2xl bg-gradient-to-br from-brand-500 to-blue-500 flex items-center justify-center text-lg font-semibold shadow-lg">
+                    A
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 grid grid-cols-3 gap-3 text-center text-xs">
+                <div class="rounded-2xl bg-slate-900/70 px-3 py-3">
+                  <p class="text-lg font-semibold text-cyan-300">10+</p>
+                  <p class="text-slate-400">Web Apps</p>
+                </div>
+                <div class="rounded-2xl bg-slate-900/70 px-3 py-3">
+                  <p class="text-lg font-semibold text-cyan-300">MQTT</p>
+                  <p class="text-slate-400">IoT Systems</p>
+                </div>
+                <div class="rounded-2xl bg-slate-900/70 px-3 py-3">
+                  <p class="text-lg font-semibold text-cyan-300">Robotics</p>
+                  <p class="text-slate-400">Prototypes</p>
+                </div>
+              </div>
+
+              <div class="mt-5 flex flex-wrap gap-2 text-[11px]">
+                <span class="px-3 py-1 rounded-full bg-cyan-500/20 text-cyan-100 border border-cyan-400/60">Tailwind CSS</span>
+                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-100 border border-slate-600">Arduino / NodeMCU</span>
+                <span class="px-3 py-1 rounded-full bg-slate-800 text-slate-100 border border-slate-600">MQTT / HiveMQ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects" class="py-10 sm:py-12 border-t border-white/5 bg-slate-950/70">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3 mb-6">
+            <div>
+              <h2 class="text-2xl sm:text-3xl font-semibold">Projects</h2>
+              <p class="mt-1 text-sm text-slate-400">Categorized into Web Apps, Robotics, IoT, Games, Apps and Utilities.</p>
+            </div>
+          </div>
+
+          <!-- FEATURED WEB APPS -->
+          <div class="mb-8">
+            <div class="flex items-center justify-between gap-2 mb-3">
+              <h3 class="text-lg font-semibold">Featured Web Apps</h3>
+              <span class="text-xs px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-500 border border-brand-500/40">
+                Live demos available
+              </span>
+            </div>
+            <div class="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              <!-- Income & Expense Tracker -->
+              <article class="card-hover rounded-2xl glass-soft border border-white/10 p-4 flex flex-col">
+                <div class="aspect-[16/9] rounded-xl bg-gradient-to-br from-emerald-500/30 via-slate-900 to-slate-900 mb-3 flex items-center justify-center text-xs text-emerald-100 border border-emerald-500/30">
+                  Income & Expense Overview UI
+                </div>
+                <h4 class="text-base font-semibold">Income & Expense Tracker</h4>
+                <p class="mt-2 text-sm text-slate-300 flex-1">
+                  A browser-based finance tracker to log income, expenses, and balances with a clean, distraction-free UI.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">HTML</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">CSS</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">JavaScript</span>
+                </div>
+                <div class="mt-4">
+                  <a href="https://afkar-3374.github.io/Income-and-Expense-Tracker/" target="_blank"
+                     class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                    View Project
+                  </a>
+                </div>
+              </article>
+
+              <!-- Election Platform -->
+              <article class="card-hover rounded-2xl glass-soft border border-white/10 p-4 flex flex-col">
+                <div class="aspect-[16/9] rounded-xl bg-gradient-to-br from-blue-500/30 via-slate-900 to-slate-900 mb-3 flex items-center justify-center text-xs text-blue-100 border border-blue-500/30">
+                  School Election UI
+                </div>
+                <h4 class="text-base font-semibold">Election Platform</h4>
+                <p class="mt-2 text-sm text-slate-300 flex-1">
+                  A simple, web-based election platform for schools with candidate pages and a smooth voting flow.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Multi-page</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Responsive</span>
+                </div>
+                <div class="mt-4">
+                  <a href="https://afkar-3374.github.io/election/" target="_blank"
+                     class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                    View Project
+                  </a>
+                </div>
+              </article>
+
+              <!-- A Poly Student -->
+              <article class="card-hover rounded-2xl glass-soft border border-white/10 p-4 flex flex-col">
+                <div class="aspect-[16/9] rounded-xl bg-gradient-to-br from-cyan-500/30 via-slate-900 to-slate-900 mb-3 flex items-center justify-center text-xs text-cyan-100 border border-cyan-500/30">
+                  Polytechnic Resource Hub
+                </div>
+                <h4 class="text-base font-semibold">A Poly Student</h4>
+                <p class="mt-2 text-sm text-slate-300 flex-1">
+                  A dedicated education site for polytechnic students with notes, resources, and a clean, focused interface.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Tailwind CSS</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Notes & Tools</span>
+                </div>
+                <div class="mt-4">
+                  <a href="https://afkar-3374.github.io/apoly-student/" target="_blank"
+                     class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-500 to-sky-500 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                    View Project
+                  </a>
+                </div>
+              </article>
+
+              <!-- Code Builder -->
+              <article class="card-hover rounded-2xl glass-soft border border-white/10 p-4 flex flex-col">
+                <div class="aspect-[16/9] rounded-xl bg-gradient-to-br from-fuchsia-500/30 via-slate-900 to-slate-900 mb-3 flex items-center justify-center text-xs text-fuchsia-100 border border-fuchsia-500/30">
+                  Code / File Builder Layout
+                </div>
+                <h4 class="text-base font-semibold">Code Builder</h4>
+                <p class="mt-2 text-sm text-slate-300 flex-1">
+                  A browser tool to quickly build and organize code snippets or files for projects, ready to download or share.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Single-page App</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Productivity</span>
+                </div>
+                <div class="mt-4">
+                  <a href="https://afkar-3374.github.io/File_Builder/" target="_blank"
+                     class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-fuchsia-500 to-purple-500 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                    View Project
+                  </a>
+                </div>
+              </article>
+
+              <!-- Proposal Builder -->
+              <article class="card-hover rounded-2xl glass-soft border border-white/10 p-4 flex flex-col">
+                <div class="aspect-[16/9] rounded-xl bg-gradient-to-br from-amber-500/30 via-slate-900 to-slate-900 mb-3 flex items-center justify-center text-xs text-amber-100 border border-amber-500/30">
+                  Project Proposal Layout
+                </div>
+                <h4 class="text-base font-semibold">Proposal Builder</h4>
+                <p class="mt-2 text-sm text-slate-300 flex-1">
+                  A structured proposal builder that helps generate neat, formatted project proposals directly in the browser.
+                </p>
+                <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Project Docs</span>
+                  <span class="px-2.5 py-1 rounded-full bg-slate-900/80 border border-slate-700">Print-friendly</span>
+                </div>
+                <div class="mt-4">
+                  <a href="https://afkar-3374.github.io/New-Proposal/" target="_blank"
+                     class="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-amber-500 to-orange-500 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                    View Project
+                  </a>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <!-- OTHER WEB APPS CATEGORY -->
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3">Other Web Apps & Tools</h3>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">File Upload System (HTML Only)</p>
+                <p class="mt-1 text-slate-300">
+                  Client-side file upload and preview system supporting up to 5 files of 600MB each, with delete and fullscreen view.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Google Drive Upload / Download Interface</p>
+                <p class="mt-1 text-slate-300">
+                  Integrates with Google Drive to create public download links for files without needing a backend server.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">AI Assistant Web App</p>
+                <p class="mt-1 text-slate-300">
+                  A custom JavaScript chatbot UI that answers user questions from a predefined knowledge base.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">ElectroSparkzz Website</p>
+                <p class="mt-1 text-slate-300">
+                  Multi-page electronics shop site with seller cards and individual pages for each shop's products.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ROBOTICS & MECHATRONICS -->
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3">Robotics & Mechatronics</h3>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Humanoid Robot</p>
+                <p class="mt-1 text-slate-300">
+                  Arduino-based humanoid with movable hand, rotatable head, and support for face-recognition camera and speech.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Dual OLED Robot Eyes</p>
+                <p class="mt-1 text-slate-300">
+                  Two NodeMCU boards each control one SH1106 OLED eye with MQTT-based mood and direction animations.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">2-Seater Electric Car</p>
+                <p class="mt-1 text-slate-300">
+                  Custom 2-seat electric vehicle (20 km/h, 15 km range, 200 kg load) with large rear storage.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">1-Seater Electric Car</p>
+                <p class="mt-1 text-slate-300">
+                  Compact single-seat version with ~120 kg capacity, designed for short-range transport.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Moving Zebra Crossing Systems</p>
+                <p class="mt-1 text-slate-300">
+                  Multiple versions of a conveyor-style zebra crossing controlled by traffic lights, including solar and
+                  handicap-assist versions.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Traffic Motor Control Module</p>
+                <p class="mt-1 text-slate-300">
+                  Arduino + L298N based module that maps red/yellow/green signals to different motor speeds.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- IOT & EMBEDDED -->
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3">IoT & Embedded Systems</h3>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Tempro — 10 NodeMCU Network</p>
+                <p class="mt-1 text-slate-300">
+                  Distributed temperature monitoring with 10 NodeMCU + DHT11 units sending data via MQTT to a central dashboard.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">HC-05 Bluetooth LCD Display</p>
+                <p class="mt-1 text-slate-300">
+                  Web interface sends text via HC-05 to Arduino, displaying on a 16×2 LCD with adjustable contrast.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">GetMyBus — Live Location (MQTT)</p>
+                <p class="mt-1 text-slate-300">
+                  Driver and user pages share bus location using MQTT, allowing students to track the bus in real time.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">RFID Tools & Testing</p>
+                <p class="mt-1 text-slate-300">
+                  Experiments with RFID readers, tag detection and basic access control concepts.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">L298N Motor Control Utilities</p>
+                <p class="mt-1 text-slate-300">
+                  Reusable control logic for DC motors, used across zebra crossing and vehicle projects.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- GAMES & SIMULATIONS -->
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3">Games & Simulations</h3>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Ludo Game</p>
+                <p class="mt-1 text-slate-300">
+                  Browser-based Ludo with correct token movement rules, dice logic, and winning conditions.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Maze Game (50 Levels)</p>
+                <p class="mt-1 text-slate-300">
+                  A multi-level maze game with danger zones, magic zones, life system, timers, and sound effects.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Temple Run–Style 3D Runner</p>
+                <p class="mt-1 text-slate-300">
+                  Simplified 3D running game with basic camera follow and object collection logic.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Zebra Crossing Animations</p>
+                <p class="mt-1 text-slate-300">
+                  Browser simulations with moving zebra crossing, car, traffic signal, and environment animations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- APPS (MIT / KODULAR) -->
+          <div class="mb-8">
+            <h3 class="text-lg font-semibold mb-3">Apps (MIT App Inventor / Kodular)</h3>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">MIT App Inventor — File Upload App</p>
+                <p class="mt-1 text-slate-300">
+                  Mobile app that uploads files, stores metadata, and shows them in a ListView using CloudDB.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Personal Extra Storage App</p>
+                <p class="mt-1 text-slate-300">
+                  Cloud-based private storage app built with MIT App Inventor for simple personal file management.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Kodular Bluetooth App</p>
+                <p class="mt-1 text-slate-300">
+                  Bluetooth controller app using List Picker to connect to devices, mainly used with Arduino projects.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- UTILITIES & STUDY -->
+          <div class="mb-2">
+            <h3 class="text-lg font-semibold mb-3">Utilities & Study</h3>
+            <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 text-sm">
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">A4 QR Print Helper</p>
+                <p class="mt-1 text-slate-300">
+                  Helper tool to generate and arrange QR codes for printing on A4 sheets.
+                </p>
+              </div>
+              <div class="card-hover glass-soft rounded-2xl border border-white/10 p-4">
+                <p class="font-semibold">Introduction to Robotics (Malayalam)</p>
+                <p class="mt-1 text-slate-300">
+                  Educational content prepared for students (around 8th standard) introducing robotics in Malayalam.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SKILLS SECTION -->
+      <section id="skills" class="py-10 sm:py-12 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-5">Skills</h2>
+          <div class="grid gap-5 sm:grid-cols-3 text-sm">
+            <div class="glass-soft rounded-2xl border border-white/10 p-5">
+              <p class="font-semibold mb-2">Hardware & Embedded</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">Arduino</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">NodeMCU (ESP8266)</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">L298N / Motors</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">OLED (SH1106)</span>
+              </div>
+            </div>
+            <div class="glass-soft rounded-2xl border border-white/10 p-5">
+              <p class="font-semibold mb-2">Web & Frontend</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">HTML</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">CSS / Tailwind</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">JavaScript</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">Responsive Design</span>
+              </div>
+            </div>
+            <div class="glass-soft rounded-2xl border border-white/10 p-5">
+              <p class="font-semibold mb-2">IoT & Tools</p>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">MQTT / HiveMQ</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">MIT App Inventor</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">Kodular</span>
+                <span class="px-3 py-1 rounded-full bg-slate-900 border border-slate-700">Prototyping</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT SECTION -->
+      <section id="about" class="py-10 sm:py-12 border-t border-white/5">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 grid gap-6 md:grid-cols-[minmax(0,1.4fr)_minmax(0,1fr)] items-start">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-semibold mb-4">About Me</h2>
+            <p class="text-sm sm:text-base text-slate-300">
+              I'm an electronics and robotics student who loves building things that actually move, blink,
+              and help people. I focus on bridging
+              <span class="text-cyan-300">embedded hardware</span> with
+              <span class="text-cyan-300">clean web interfaces</span>.
+            </p>
+            <p class="mt-3 text-sm sm:text-base text-slate-300">
+              From moving zebra crossings and custom electric vehicles to student-friendly tools like
+              <em>A Poly Student</em>, income trackers, and builders, my goal is to make
+              <span class="text-sky-300">practical systems</span> that are easy to use and fun to build.
+            </p>
+            <div class="mt-4 text-sm text-slate-400">
+              <p><span class="font-semibold text-slate-200">Education:</span> SSLC — GVHSS Mogral</p>
+              <p><span class="font-semibold text-slate-200">Current:</span> Diploma in Electronics — Govt. Polytechnic College Kasaragod</p>
+            </div>
+          </div>
+
+          <div class="glass-soft rounded-2xl border border-white/10 p-5 text-sm">
+            <p class="font-semibold mb-2">Quick Links</p>
+            <ul class="space-y-2 text-slate-300">
+              <li><a href="mailto:afkar3374@gmail.com" class="hover:text-cyan-300">📧 Email: afkar3374@gmail.com</a></li>
+              <li><a href="https://wa.me/919895088590" target="_blank" class="hover:text-cyan-300">💬 WhatsApp: +91 98950 88590</a></li>
+              <li><a href="https://github.com/afkar-3374" target="_blank" class="hover:text-cyan-300">💻 GitHub: @afkar-3374</a></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT SECTION -->
+      <section id="contact" class="py-10 sm:py-12 border-t border-white/5 bg-slate-950/80">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6">
+          <h2 class="text-2xl sm:text-3xl font-semibold mb-4">Get in Touch</h2>
+          <div class="grid gap-6 md:grid-cols-2 text-sm">
+            <div class="glass-soft rounded-2xl border border-white/10 p-5">
+              <p class="font-semibold mb-2">Direct Contact</p>
+              <p class="text-slate-300">
+                WhatsApp is usually the fastest. You can also email me with your project idea or collaboration.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-3">
+                <a href="https://wa.me/919895088590" target="_blank"
+                   class="inline-flex items-center gap-2 rounded-full bg-emerald-500 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                  💬 Chat on WhatsApp
+                </a>
+                <a href="mailto:afkar3374@gmail.com"
+                   class="inline-flex items-center gap-2 rounded-full border border-slate-600 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 hover:bg-slate-800">
+                  ✉️ Send Email
+                </a>
+              </div>
+            </div>
+
+            <div class="glass-soft rounded-2xl border border-white/10 p-5">
+              <p class="font-semibold mb-2">Quick Contact Form</p>
+              <p class="text-xs sm:text-sm text-slate-300">
+                This form opens your default mail app using <strong>mailto</strong>. For production, you can later switch to Formspree.
+              </p>
+              <form action="mailto:afkar3374@gmail.com" method="post" encType="text/plain" class="mt-3 space-y-3">
+                <input name="Name" placeholder="Your name" required
+                       class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500">
+                <input name="Email" placeholder="Your email" required
+                       class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500">
+                <textarea name="Message" rows="4" placeholder="Write your message..."
+                          class="w-full rounded-xl border border-slate-700 bg-slate-950/80 px-3 py-2.5 text-sm text-slate-100 placeholder:text-slate-500 focus:outline-none focus:ring-1 focus:ring-brand-500"></textarea>
+                <div class="flex gap-3">
+                  <button type="submit"
+                          class="inline-flex items-center justify-center rounded-full bg-brand-500 px-4 py-2 text-sm font-medium text-white hover:brightness-110">
+                    Send
+                  </button>
+                  <button type="reset"
+                          class="inline-flex items-center justify-center rounded-full border border-slate-600 bg-slate-900/80 px-4 py-2 text-sm text-slate-100 hover:bg-slate-800">
+                    Reset
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 py-5 bg-slate-950/90">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-sm text-slate-500">
+        <div>© <span id="year"></span> Muhammed Afkar M A — Electronics & Robotics</div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="#hero" class="hover:text-cyan-300">Back to top</a>
+          <a href="https://github.com/afkar-3374" target="_blank" class="hover:text-cyan-300">GitHub</a>
+          <a href="mailto:afkar3374@gmail.com" class="hover:text-cyan-300">Email</a>
+          <a href="https://wa.me/919895088590" target="_blank" class="hover:text-cyan-300">WhatsApp</a>
+        </div>
+      </div>
+    </footer>
   </div>
-</section>
 
-<!-- PROJECTS -->
-<section id="projects" class="py-16 border-t border-white/5">
-  <div class="max-w-6xl mx-auto px-4">
-
-    <h2 class="text-3xl font-semibold mb-2">Projects</h2>
-    <p class="text-slate-400 mb-10">
-      A categorized collection of my work across web, robotics, IoT, and apps.
-    </p>
-
-    <!-- FEATURED -->
-    <h3 class="text-xl font-semibold mb-4">⭐ Featured Projects</h3>
-    <div class="grid md:grid-cols-3 gap-6 mb-14">
-      <div class="card p-5 rounded-2xl">
-        <h4 class="font-semibold">Tempro — IoT Network</h4>
-        <p class="text-sm text-slate-300 mt-2">
-          10 NodeMCU + DHT11 units sending temperature data via MQTT.
-        </p>
-      </div>
-      <div class="card p-5 rounded-2xl">
-        <h4 class="font-semibold">Moving Zebra Crossing</h4>
-        <p class="text-sm text-slate-300 mt-2">
-          Traffic-signal controlled conveyor-style zebra crossing system.
-        </p>
-      </div>
-      <div class="card p-5 rounded-2xl">
-        <h4 class="font-semibold">A Poly Student</h4>
-        <p class="text-sm text-slate-300 mt-2">
-          Resource platform for polytechnic students.
-        </p>
-      </div>
-    </div>
-
-    <!-- WEB -->
-    <h3 class="text-xl font-semibold mb-4">🌐 Web Apps & Tools</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-      <div class="card p-4 rounded-xl">Income & Expense Tracker</div>
-      <div class="card p-4 rounded-xl">Election Platform</div>
-      <div class="card p-4 rounded-xl">Code / File Builder</div>
-      <div class="card p-4 rounded-xl">Proposal Builder</div>
-      <div class="card p-4 rounded-xl">File Upload System (HTML only)</div>
-      <div class="card p-4 rounded-xl">Google Drive Upload Interface</div>
-      <div class="card p-4 rounded-xl">AI Assistant Web App</div>
-      <div class="card p-4 rounded-xl">ElectroSparkzz Website</div>
-    </div>
-
-    <!-- ROBOTICS -->
-    <h3 class="text-xl font-semibold mb-4">🤖 Robotics & Mechatronics</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-      <div class="card p-4 rounded-xl">Humanoid Robot</div>
-      <div class="card p-4 rounded-xl">Dual OLED Robot Eyes</div>
-      <div class="card p-4 rounded-xl">2-Seater Electric Car</div>
-      <div class="card p-4 rounded-xl">1-Seater Electric Car</div>
-      <div class="card p-4 rounded-xl">Traffic Motor Control Module</div>
-    </div>
-
-    <!-- IOT -->
-    <h3 class="text-xl font-semibold mb-4">📡 IoT & Embedded</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-      <div class="card p-4 rounded-xl">Tempro — MQTT Dashboard</div>
-      <div class="card p-4 rounded-xl">HC-05 Bluetooth LCD System</div>
-      <div class="card p-4 rounded-xl">GetMyBus — Live Location</div>
-      <div class="card p-4 rounded-xl">RFID Experiments</div>
-      <div class="card p-4 rounded-xl">L298N Utilities</div>
-    </div>
-
-    <!-- GAMES -->
-    <h3 class="text-xl font-semibold mb-4">🎮 Games & Simulations</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-      <div class="card p-4 rounded-xl">Ludo Game</div>
-      <div class="card p-4 rounded-xl">Maze Game (50 Levels)</div>
-      <div class="card p-4 rounded-xl">Temple Run–Style 3D Runner</div>
-      <div class="card p-4 rounded-xl">Zebra Crossing Animations</div>
-    </div>
-
-    <!-- APPS -->
-    <h3 class="text-xl font-semibold mb-4">📱 Apps (MIT / Kodular)</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-14">
-      <div class="card p-4 rounded-xl">MIT App Inventor File Upload App</div>
-      <div class="card p-4 rounded-xl">Personal Extra Storage App</div>
-      <div class="card p-4 rounded-xl">Kodular Bluetooth Controller</div>
-    </div>
-
-    <!-- UTILITIES -->
-    <h3 class="text-xl font-semibold mb-4">🧰 Utilities & Study</h3>
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-      <div class="card p-4 rounded-xl">A4 QR Print Helper</div>
-      <div class="card p-4 rounded-xl">Intro to Robotics (Malayalam)</div>
-    </div>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="py-6 border-t border-white/5 text-center text-sm text-slate-500">
-  © <span id="year"></span> Muhammed Afkar M A
-</footer>
-
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
